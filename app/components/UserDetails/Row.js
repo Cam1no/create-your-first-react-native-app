@@ -15,7 +15,7 @@ const Row = ({ label, body, actions = [] }) => {
         {actions.map((action, index) => (
           <TouchableOpacity
             onPress={action.onPress}
-            ket={index}
+            key={index}
           >
             <Icon
               style={styles.actionIcon}
