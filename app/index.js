@@ -1,10 +1,10 @@
 import React from 'react';
 import Contacts from './screens/Contacts';
-import { Tabs } from './config/routes';
+import { Tabs, Drawer } from './config/routes';
 
 const App = () => {
   return(
-    <Tabs />
+    <Drawer />
   );
 }
 

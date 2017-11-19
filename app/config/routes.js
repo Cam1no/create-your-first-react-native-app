@@ -1,5 +1,6 @@
 import React from 'react';
-import { StackNavigator, TabNavigator } from 'react-navigation';
+import { StackNavigator, TabNavigator, DrawerNavigator } from 'react-navigation';
+import { Button } from 'react-native';
 
 import Contacts from '../screens/Contacts';
 import Details from '../screens/Details';
@@ -11,9 +12,10 @@ import { capitalizeFirstLetter } from '../helpers/string';
 export const ContactsStack = StackNavigator({
   Contacts: {
     screen: Contacts,
-    navigationOptions: {
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: <Button title='open' onPress={() => navigation.navigate('DrawerOpen')} />,
       title: 'Contacts',
-    },
+    }),
   },
   Details: {
     screen: Details,
@@ -26,18 +28,20 @@ export const ContactsStack = StackNavigator({
 export const NewContactsStack = StackNavigator({
   NewContact: {
     screen: NewContact,
-    navigationOptions: {
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: <Button title='open' onPress={() => navigation.navigate('DrawerOpen')} />,
       headerTitle: 'NewContacts',
-    },
+    }),
   },
 });
 
 export const MeStack = StackNavigator({
   Me: {
     screen: Me,
-    navigationOptions: {
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: <Button title='open' onPress={() => navigation.navigate('DrawerOpen')} />,
       headerTitle: 'Me',
-    },
+    }),
   },
 });
 
@@ -61,6 +65,30 @@ export const Tabs = TabNavigator({
     navigationOptions: {
       tabBarLabel: 'Me',
       tabBarIcon: ({ tintColor }) => <Icon name='ios-contact' size={25} color={tintColor}/>,
+    },
+  },
+});
+
+export const Drawer = DrawerNavigator({
+  Contacts: {
+    screen: ContactsStack,
+    navigationOptions: {
+      DrawerLabel: 'Contact',
+      DrawerIcon: ({ tintColor }) => <Icon name='ios-list' size={35} color={tintColor}/>,
+    },
+  },
+  NewContact: {
+    screen: NewContactsStack,
+    navigationOptions: {
+      DrawerLabel: 'NewContact',
+      DrawerIcon: ({ tintColor }) => <Icon name='ios-add' size={25} color={tintColor}/>,
+    },
+  },
+  Me: {
+    screen: MeStack,
+    navigationOptions: {
+      DrawerLabel: 'Me',
+      DrawerIcon: ({ tintColor }) => <Icon name='ios-contact' size={25} color={tintColor}/>,
     },
   },
 });
