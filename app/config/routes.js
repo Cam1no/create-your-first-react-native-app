@@ -1,6 +1,6 @@
 import React from 'react';
 import { StackNavigator, TabNavigator, DrawerNavigator } from 'react-navigation';
-import { Button } from 'react-native';
+import { Button, Platform } from 'react-native';
 
 import Contacts from '../screens/Contacts';
 import Details from '../screens/Details';
@@ -9,11 +9,18 @@ import NewContact from '../screens/NewContact';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { capitalizeFirstLetter } from '../helpers/string';
 
+const LeftDrawerButton = ({ navigation }) => {
+  if (Platform.OS === 'android'){
+    return <Button title='open' onPress={() => navigation.navigate('DrawerOpen')} />;
+  }
+  return null;
+}
+
 export const ContactsStack = StackNavigator({
   Contacts: {
     screen: Contacts,
-    navigationOptions: ({ navigation }) => ({
-      headerLeft: <Button title='open' onPress={() => navigation.navigate('DrawerOpen')} />,
+    navigationOptions: (props) => ({
+      headerLeft: <LeftDrawerButton {...props}/>,
       title: 'Contacts',
     }),
   },
@@ -28,8 +35,8 @@ export const ContactsStack = StackNavigator({
 export const NewContactsStack = StackNavigator({
   NewContact: {
     screen: NewContact,
-    navigationOptions: ({ navigation }) => ({
-      headerLeft: <Button title='open' onPress={() => navigation.navigate('DrawerOpen')} />,
+    navigationOptions: (props) => ({
+      headerLeft: <LeftDrawerButton {...props}/>,
       headerTitle: 'NewContacts',
     }),
   },
@@ -38,8 +45,8 @@ export const NewContactsStack = StackNavigator({
 export const MeStack = StackNavigator({
   Me: {
     screen: Me,
-    navigationOptions: ({ navigation }) => ({
-      headerLeft: <Button title='open' onPress={() => navigation.navigate('DrawerOpen')} />,
+    navigationOptions: (props) => ({
+      headerLeft: <LeftDrawerButton {...props}/>,
       headerTitle: 'Me',
     }),
   },

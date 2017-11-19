@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { ScrollView, Text } from 'react-native';
+import { Header, Actions, Info } from '../components/UserDetails';
+import colors from '../config/colors';
+import { me } from '../config/data';
 
 export default class Me extends Component {
   render(){
-    const { state } = this.props.navigation;
     return(
-      <View style={ { flex: 1, alignItems: 'center', justifyContent: 'center' } }>
-        <Text>Me Screen</Text>
-      </View>
+      <ScrollView style={ { backgroundColor: colors.background } }>
+        <Header {...me} />
+        <Actions {...me} />
+        <Info {...me} />
+      </ScrollView>
     );
   }
 }
