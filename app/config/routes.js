@@ -23,6 +23,24 @@ export const ContactsStack = StackNavigator({
   },
 });
 
+export const NewContactsStack = StackNavigator({
+  NewContact: {
+    screen: NewContact,
+    navigationOptions: {
+      title: 'NewContacts',
+    },
+  },
+});
+
+export const MeStack = StackNavigator({
+  Me: {
+    screen: Me,
+    navigationOptions: {
+      title: 'Me',
+    },
+  },
+});
+
 export const Tabs = TabNavigator({
   Contacts: {
     screen: ContactsStack,
@@ -32,14 +50,14 @@ export const Tabs = TabNavigator({
     },
   },
   NewContact: {
-    screen: NewContact,
+    screen: NewContactsStack,
     navigationOptions: {
       tabBarLabel: 'NewContact',
       tabBarIcon: ({ tintColor }) => <Icon name='ios-add' size={25} color={tintColor}/>,
     },
   },
   Me: {
-    screen: Me,
+    screen: MeStack,
     navigationOptions: {
       tabBarLabel: 'Me',
       tabBarIcon: ({ tintColor }) => <Icon name='ios-contact' size={25} color={tintColor}/>,
