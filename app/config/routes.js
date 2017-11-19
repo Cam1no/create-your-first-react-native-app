@@ -27,7 +27,7 @@ export const NewContactsStack = StackNavigator({
   NewContact: {
     screen: NewContact,
     navigationOptions: {
-      title: 'NewContacts',
+      headerTitle: 'NewContacts',
     },
   },
 });
@@ -36,7 +36,7 @@ export const MeStack = StackNavigator({
   Me: {
     screen: Me,
     navigationOptions: {
-      title: 'Me',
+      headerTitle: 'Me',
     },
   },
 });
