@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { View } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { TextInput } from '../components/TextInput'
 import { PrimaryButton } from '../components/Buttons'
 import colors from '../config/colors';
@@ -37,7 +38,7 @@ export default class NewContact extends Component {
 
   render(){
     return(
-      <ScrollView style={{ backgroundColor: colors.background }}>
+      <KeyboardAwareScrollView style={{ backgroundColor: colors.background }}>
         {
           fields.map((field) => (
             <TextInput
@@ -53,7 +54,7 @@ export default class NewContact extends Component {
             onPress={() => this.handleSubmit()}
           />
         </View>
-      </ScrollView>
+      </KeyboardAwareScrollView>
     );
   }
 }
