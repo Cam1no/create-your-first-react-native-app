@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { ScrollView, Text } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { TextInput } from '../components/TextInput'
-
+import { PrimaryButton } from '../components/Buttons'
 import colors from '../config/colors';
 
 const fields = [
@@ -29,6 +29,12 @@ export default class NewContact extends Component {
     mod[stateKey] = text;
     this.setState(mod);
   }
+
+  handleSubmit = () => {
+    alert("submit");
+  }
+
+
   render(){
     return(
       <ScrollView style={{ backgroundColor: colors.background }}>
@@ -41,6 +47,12 @@ export default class NewContact extends Component {
             />
           ))
         }
+        <View style={{ marginTop: 20 }}>
+          <PrimaryButton
+            label='Submit'
+            onPress={() => this.handleSubmit()}
+          />
+        </View>
       </ScrollView>
     );
   }
